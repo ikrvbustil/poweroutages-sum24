@@ -2,7 +2,8 @@
 
 **Name(s)**: Iain Roman Bustillos
 
-**Website Link**: https://ikrvbustil.github.io/poweroutages-sum24/
+**Website Link**: [https://ikrvbustil.github.io/poweroutages-sum24/
+](https://ikrvbustil.github.io/poweroutages-sum24/)
 
 ## Introduction
 
