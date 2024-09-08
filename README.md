@@ -56,3 +56,40 @@ Note: This project was made as a final project for DSC80 at UCSD during SS2.
 |	2010-11-13  | 15:00:00	2010	| 11	| Minnesota	| 60000.0 |
 
 **Univariate Analysis**: For this analysis, I chose to see the power outage counts by month in order to get a little visual of how the counts look like per month, which is our question. This gave us a good visual that the the power outages spike during June and the lowest being the month of November. This surprised me since I thought it would be December given all the Christmas lights that are put up during that time.
+
+**PLOT1**
+
+**Bivariate Analysis**: For this analysis, I modified the cleaned data in order to get the total number of customers affted per year. To do this I grouped by `YEAR` and summed up the `CUSTOMERS.AFFECTED` column then reset the index. This helped me see that power outages affected the most amount of customers in the year 2008, with many increases in power outages between the year 2001 to 2003 and 2009-2011. This helps us see and maybe even wonder what could have happened during those years. Infinite amount of possibilites.
+
+**PLOT2**
+
+**Interesing Aggregates**: Something interesing we can see about this data by grouping/pivoting it is that Florida had a really big spike in power outages in 2004. They had the most power outages by any state in any given year (in the data). Also, it had the most amount of customers affected with a whopping 7 million customers (this could be repeated people, but it is still outstanding that it happened so many times), a staggering million ahead of second place Texas in 2008 and more than 4 million to third place California in 2008.
+
+## Assessment of Missingness
+
+**NMAR analysis**: Based on the data, we can infer that there is a sense of NMAR happening. Not missing at random (NMAR) is when the missingness of a value is given by the column itself. One might say that the `HURRICANE.NAME` column is NMAR. However, this is closer to MD (missing by design) since if the hurricane doesn't have a name, then that means that there was no hurricane. A better column to show NMAR would by the `CUSTOMERS.AFFECTED` column since this would make sense since it's very hard to keep an accurate record of how many people were affected by the outage. Or maybe the amount was so low that it didn't make sense to include it. Or, it could be that the number was too large to estimate. 
+
+**Missingness Dependency**: We can see this data 
+
+## Hypothesis Testing
+Now, to further analyze the data, we can perform a permutation test on it to get a better feel for it. We can ask a question first. 
+
+**Null Hypothesis**: The distribution of power outages is the same before and after 12 PM.
+
+**Alternative Hypothesis**: The distribution of power outages after 12 is higher than the distribution of power outages before.
+
+I chose these hypotheses because I would think that because we use more electricity throughout the day, since we sleep throughout the night, that the power could go out more oftenly during the day. For this test, the best columns to choose is the `OUTAGE.START` column which we created earlier. For this, we can have a permutation test by shuffling the times and finding the differences in mean. 
+
+**PLOT3**
+
+**Result** Since the p-value is bigger than 0.05, we fail to reject the null hypothesis, meaning that the distribution of power outages are equal throughout the day.
+
+## Framing a Prediction Problem
+
+Now, we will try to answer a question which we will try to predict. That question will be to be able to predict the total amount of consumption of a state given the different factors. It will be a pipeline with `StandardScaler()` to standardize the features and `LinearRegression()` for prediction. The factors will be `YEAR` and `TOTAL.CUSTOMERS`. And for performance I will use `Mean Absolute Error (MAE)` to indicate the average magnitude of errors. And also, I'll be using `R-squared` in order to show the proportion of variance. 
+
+## Baseline Model
+
+The model is like the one described, with a pipline with a `StandarSscaler()` which standardizes the two features, `YEAR` and `TOTAL.CUSTOMERS`. And the model I used was a `LinearRegression()`I believe that it is a good model because it has a really good `R-squared` at an average of 0.75.
+
+
