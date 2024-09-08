@@ -99,3 +99,11 @@ To be able to improve on this basic model, we will still use `TOTAL.CUSTOMERS` a
 A very big difference in this new final model is the fact that the `R-squared is improved by a good amount, reaching up to a 0.95. So with this score, we can confidently say that it's a big improvement to our basic model.
 
 ## Fairness Analysis
+
+I truly believe that this model is fair to all. We can test this out by solving this hypothesis question:
+
+**Null Hypothesis**: The model's performance is the same for both groups (high/low population density)
+
+**Alternative Hypothesis**: The model's performance is significantly different between the two groups.
+
+To do this, we will look at the difference in `R-squared` for both populations and run them through the model. A large difference in performance would indicate that this model is unfair, but it doesn't specify who since it doesn't matter since to whoever it's unfair to it'll affect them.
